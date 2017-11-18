@@ -36,7 +36,7 @@
                                 <div class="name">{{item.productName}}</div>
                                 <div class="price">{{item.salePrice}}</div>
                                 <div class="btn-area">
-                                    <a href="javascript:;" class="btn btn--m">加入购物车</a>
+                                    <a href="javascript:;" class="btn btn--m" @click="addCart(item.productId)">加入购物车</a>
                                 </div>
                             </div>
                         </li>
@@ -119,7 +119,8 @@ export default {
         var param = {
             page:this.page,
             pageSize:this.pageSize,
-            sort:this.sortFlag?1:-1
+            sort:this.sortFlag?1:-1,
+            priceLevel:this.priceChecked
         }
         this.loading=true
         axios.get("/goods",{
@@ -157,7 +158,9 @@ export default {
     
     setPriceFilter(index){
           console.log(index)
-          this.priceChecked=index
+          this.priceChecked=index;
+          this.page = 1;
+          this.getGoodsList()
       },
     loadMore(){
         this.busy=true;
@@ -165,6 +168,18 @@ export default {
             this.page++;
             this.getGoodsList(true);
         },500)
+    },
+    addCart(productId){
+        axios.post("/goods/addCart",{
+            productId:productId
+        }).then((res)=>{
+            var res=res.data;
+            if(res.status==0){
+                alert("加入成功");
+            }else{
+                alert("Error msg:" + res.msg)
+            }
+        })
     },
     showFilterPop(){
         this.filterBy=true;
