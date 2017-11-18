@@ -17,10 +17,10 @@ mongoose.connection.on("error", function () {
 mongoose.connection.on("disconnected", function () {
   console.log("MongoDB connected disconnected.")
 });
-router.get('/',function(req,res,next){
+router.get('/list',function(req,res,next){
   let page = parseInt(req.param("page"));
   let pageSize = parseInt(req.param("pageSize"));
-  let priceLevel = req.param("priceLevel");
+  let priceLevel = req.param("priceLevel"); 
   let sort = req.param("sort");
   let skip = (page-1)*pageSize;
   let priceGt='';
