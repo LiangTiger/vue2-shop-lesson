@@ -43,6 +43,21 @@ router.post('/login', function(req, res, next) {
           msg:'',
           result:''
       })
+  });
+  router.get("checkLogin",function(req,res,next){
+      if(req.cookies.userId){
+          res.json({
+              status:'0',
+              msg:'',
+              result:req.cookies.userName||''
+          });
+      }else{
+          res.json({
+              status:'1',
+              msg:'未登录',
+              result:''
+          })
+      }
   })
 });
 
