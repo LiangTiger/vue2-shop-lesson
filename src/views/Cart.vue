@@ -82,9 +82,9 @@
                             <div class="item-quantity">
                                 <div class="select-self select-self-open">
                                     <div class="select-self-area">
-                                        <a class="input-sub">-</a>
-                                        <span class="select-ipt">{{item.productNum}}</span>
-                                        <a class="input-add">+</a>
+                                            <a class="input-sub" @click="editCart('minu',item)">-</a>
+                                            <span class="select-ipt" >{{item.productNum}}</span>
+                                            <a class="input-add" @click="editCart('add',item)">+</a>
                                     </div>
                                 </div>
                             </div>
@@ -154,9 +154,7 @@
             return{
                 cartList:[],
                 delItem:{},
-                modalConfirm:false,
-                
-
+                modalConfirm:false
             }
         },
         mounted(){
@@ -204,7 +202,30 @@
                         this.init();
                     }
                 })
-            }
+            },
+            editCart(flag,item){
+                if(flag=='add'){
+                    item.productNum++
+                    console.log('123123')
+                }else if(flag=='minu'){
+                    if(item.productNum<=1){
+                        return
+                    }
+                    item.productNum--;
+                }else{
+                    item.checked=item.checked=="1"?"0":"1";
+                }
+                axios.post("/users/cartEdit",{
+                    productId:item.productId,
+                    productNum:item.productNum,
+                    checked:item.checked
+                }).then((response)=>{
+                    let res=response.data;
+                    if(res.status=="0"){
+                        console.log('updata suc')
+                    }
+                })
+            },
         }
 
     }
