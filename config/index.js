@@ -1,5 +1,4 @@
 
-'use strict'
 // Template version: 1.1.3
 // see http://vuejs-templates.github.io/webpack for documentation.
 
@@ -33,10 +32,13 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/goods':{
-        target:'http://localhost:3000/'
+        target:'http://localhost:4000/'
       },
-      '/users':{
-        target:'http://localhost:3000/'
+      '/goods/*':{
+        target:'http://localhost:4000/'
+      },
+      '/users/*':{
+        target:'http://localhost:4000/'
       }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"
