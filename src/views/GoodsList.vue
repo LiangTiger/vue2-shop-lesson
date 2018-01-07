@@ -1,5 +1,6 @@
 <template>
   <div>
+  <nav-top></nav-top>
  <nav-header></nav-header>
 <nav-bread>
 <span>商品列表</span>
@@ -80,6 +81,7 @@
 <script>
 import './../assets/css/base.css'
 import './../assets/css/goods-list.css'
+import NavTop from './../components/NavTop.vue'
 import NavHeader from './../components/NavHeader.vue'
 import NavFooter from './../components/NavFooter.vue'
 import NavBread from './../components/NavBread.vue'
@@ -133,6 +135,7 @@ export default {
     this.getGoodsList()
   },
   components: {
+    NavTop,
     NavHeader,
     NavFooter,
     NavBread,
