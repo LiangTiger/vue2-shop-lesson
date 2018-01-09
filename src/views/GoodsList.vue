@@ -1,7 +1,7 @@
 <template>
-  <div>
-  <nav-top></nav-top>
- <nav-header></nav-header>
+<div>
+<nav-top></nav-top>
+<nav-header></nav-header>
 <nav-bread>
 <span>商品列表</span>
 </nav-bread>

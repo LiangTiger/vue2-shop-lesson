@@ -11,8 +11,12 @@
             <a href="#">有品</a><span>|</span>
             <a href="#">Select Region</a>
         </div>
-        <div class="topbarNavCart">
-           
+        <div class="topbarNavCart" @mouseenter="enter" @mouseleave="leave">
+            <transition name="cart">
+                <div v-show="ok" class="cart-menu">
+                    <div class="loding">购物车中还没有商品，赶紧选购吧！</div>
+                </div>
+            </transition>
             <a href="#"> <i class="iconfont icon-cart"></i><span>购物车({{cartSum}})</span></a>
         </div>
         <div class="topbarNavRight">
@@ -28,11 +32,20 @@
 import './../assets/css/base.css'
 import './../assets/css/iconfont/iconfont.css'
  export default {
-   data () {
+    data () {
      return {
-         cartSum:'1'
+         cartSum:'1',
+         ok:true,
      }
    },
+   methods:{
+       enter(){
+           this.ok=true;
+       },
+       leave(){
+           this.ok=false;
+       }
+   }
  }
 </script>
 
@@ -79,5 +92,30 @@ import './../assets/css/iconfont/iconfont.css'
         color:#424242;
         margin:0.5em;
     }
+    .cart-menu{
+        position:absolute;
+        z-index:1;
+        height:100px;
+        right:0;
+        top:40px;
+        width:300px;
+        padding:15px 0 0;
+        color:#424242;
+        background:#fff;
+        box-shadow:0 2px 10px rgba(0,0,0,0,15);
+    }
+    .loding{
+        margin:5px 20px 20px;
+        text-align:center;
+        padding:20px 0 0;
+    }
+    .cart-enter-active,.cart-leave-active{
+       transition: all .3s ease;
+    }
+    .cart-enter,.cart-leave-to{
+        transform:translateX(10px);
+        opacity:0;
+    }
+
  
 </style>
