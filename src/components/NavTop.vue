@@ -67,6 +67,7 @@ import './../assets/css/iconfont/iconfont.css'
         float:right;
     }
     .topbarNavCart{
+        position:relative;
         width:120px;
         height:40px;
         float:right;
@@ -99,22 +100,25 @@ import './../assets/css/iconfont/iconfont.css'
         right:0;
         top:40px;
         width:300px;
-        padding:15px 0 0;
         color:#424242;
         background:#fff;
-        box-shadow:0 2px 10px rgba(0,0,0,0,15);
+        box-shadow:0 2px 10px rgba(0,0,0,0.5);
     }
     .loding{
         margin:5px 20px 20px;
         text-align:center;
-        padding:20px 0 0;
+        padding:30px 0 0;
     }
     .cart-enter-active,.cart-leave-active{
-       transition: all .3s ease;
+        transition: 0.5s height ease;
     }
-    .cart-enter,.cart-leave-to{
-        transform:translateX(10px);
+    .cart-enter-active{
+        opacity:1;
+        height:100px;
+    }
+    .cart-leave-active{
         opacity:0;
+        height:0px;
     }
 
  

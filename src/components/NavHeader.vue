@@ -25,7 +25,23 @@
                 </div>
             </div>
         </div>-->
-       
+        <div class="navbar-right-container">
+            <ul class="menu-list">
+                <li><a href="#">小米手机</a></li>
+                <li><a href="#">红米</a></li>
+                <li><a href="#">笔记本</a></li>
+                <li><a href="#">电视</a></li>
+                <li><a href="#">盒子</a></li>
+                <li><a href="#">新品</a></li>
+                <li><a href="#">路由器</a></li>
+                <li><a href="#">智能硬件</a></li>
+                <li><a href="#">服务</a></li>
+                <li><a href="#">社区</a></li>
+            </ul>
+        </div>
+        <div class="navbar-right-seach">
+                
+        </div>
     </div>
       <div class="md-modal modal-msg md-modal-transition" v-bind:class="{'md-show':loginModalFlag}">
             <div class="md-modal-inner">
@@ -203,5 +219,13 @@ a {
     height: 25px;
     transform: scaleX(-1);
 }
-
+.navbar-right-container{
+    position:relative;
+    float:left;
+    height:100px;
+}
+.menu-list li{
+    float:right;
+    margin:20px 20px 20px;
+}
 </style>
