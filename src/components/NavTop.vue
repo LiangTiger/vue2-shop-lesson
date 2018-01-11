@@ -31,11 +31,11 @@
 <script>
 import './../assets/css/base.css'
 import './../assets/css/iconfont/iconfont.css'
- export default {
+ export default { 
     data () {
      return {
          cartSum:'1',
-         ok:true,
+         ok:false,
      }
    },
    methods:{
