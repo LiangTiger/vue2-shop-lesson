@@ -22,9 +22,6 @@
 
 <script>
 import './../assets/css/base.css'
-import './../assets/css/nav-header.css'
-import './../assets/css/nav-bread.css'
-import './../assets/css/nav-footer.css'
 export default {
   data () {
     return {
