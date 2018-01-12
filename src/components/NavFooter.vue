@@ -22,6 +22,7 @@
 
 <script>
 import './../assets/css/base.css'
+import './../assets/css/iconfont/iconfont.css'
 export default {
   data () {
     return {

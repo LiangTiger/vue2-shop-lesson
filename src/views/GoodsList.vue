@@ -2,9 +2,6 @@
 <div>
 <nav-top></nav-top>
 <nav-header></nav-header>
-<nav-bread>
-<span>商品列表</span>
-</nav-bread>
 <div class="accessory-result-page">
     <div class="container">
         <div class="filter-nav">
@@ -84,7 +81,6 @@ import './../assets/css/goods-list.css'
 import NavTop from './../components/NavTop.vue'
 import NavHeader from './../components/NavHeader.vue'
 import NavFooter from './../components/NavFooter.vue'
-import NavBread from './../components/NavBread.vue'
 import Modal from './../components/Modal'
 import axios from 'axios'
 
@@ -138,7 +134,6 @@ export default {
     NavTop,
     NavHeader,
     NavFooter,
-    NavBread,
     Modal
   },
   methods: {

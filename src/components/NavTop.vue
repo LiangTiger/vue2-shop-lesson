@@ -17,7 +17,7 @@
                     <div class="loding">购物车中还没有商品，赶紧选购吧！</div>
                 </div>
             </transition>
-            <a href="#"> <i class="iconfont icon-cart"></i><span>购物车({{cartSum}})</span></a>
+            <a href="#"> <i class="iconfont icon-msnui-cart"></i><span>购物车({{cartSum}})</span></a>
         </div>
         <div class="topbarNavRight">
             <a href="#">登录</a><span>|</span>
@@ -75,9 +75,11 @@ import './../assets/css/iconfont/iconfont.css'
         text-align:center;
     }
     .topbarNavCart a{
+        height:40px;
         display:block;
         line-height:40px;
         background:#424242;
+        outline:0;
 
     }
     .iconfont{
