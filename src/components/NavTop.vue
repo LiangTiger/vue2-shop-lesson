@@ -14,7 +14,7 @@
         <div class="topbarNavCart" @mouseenter="enter" @mouseleave="leave">
             <transition name="cart">
                 <div v-show="ok" class="cart-menu">
-                    <div class="loding">购物车中还没有商品，赶紧选购吧！</div>
+                    <div v-show="ok" class="loding">{{cartlist}}</div>
                 </div>
             </transition>
             <a href="#"> <i class="iconfont icon-msnui-cart"></i><span>购物车({{cartSum}})</span></a>
@@ -36,6 +36,7 @@ import './../assets/css/iconfont/iconfont.css'
      return {
          cartSum:'1',
          ok:false,
+         cartlist:"购物车中还没有商品，赶紧选购吧！",
      }
    },
    methods:{
@@ -112,14 +113,12 @@ import './../assets/css/iconfont/iconfont.css'
         padding:30px 0 0;
     }
     .cart-enter-active,.cart-leave-active{
-        transition: 0.5s height ease;
+        transition: 0.3s all ease;
     }
     .cart-enter-active{
-        opacity:1;
         height:100px;
     }
     .cart-leave-active{
-        opacity:0;
         height:0px;
     }
 

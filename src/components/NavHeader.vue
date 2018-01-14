@@ -31,6 +31,17 @@
             </form>
         </div>
     </div>
+    <div class="menu-container">
+        <transition name="menu-thumbnail" mode="out-in">
+            <div class="menu-thumbnail">
+                <ul class="menu-thumbnail-list">
+                    <li v-for="item in items" v-bind:key="item">
+                        {{item}}
+                    </li>
+                </ul>
+            </div>
+        </transition>
+    </div>
 </header>
  
 </div>
@@ -43,56 +54,12 @@ import axios from'axios'
 export default {
   data () {
     return {
-      userName:'admin',
-      userPwd:'123456',
-      errorTip:false,
-      loginModalFlag:false,
-      nickName:''
+        items:[1,2,3,4,5,6,7],
+        view:'v-a'
     }
   },
-  mounted(){
-      this.checkLogin();
-  },
   methods:{
-             checkLogin(){
-                axios.get('/users/checkLogin').then((response)=>{
-                    var res=response.data;
-                    if(res.status=="0"){
-                        this.nickName=res.result;
-                        this.loginModalFlag=false
-                    }else{
-                        
-                    }
-                })
-            },
-             login(){
-                if(!this.userName || !this.userPwd){
-                    this.errorTip = true;
-                    return;
-                }
-                axios.post("/users/login",{
-                    userName:this.userName,
-                    userPwd:this.userPwd
-                }).then((response)=>{
-                    let res = response.data;
-                    if(res.status=="0"){
-                        this.errorTip = false;
-                        this.loginModalFlag = false;
-                        this.nickName=res.result.userName;
-                    }else{
-                        this.errorTip = true;
-                    }
-                });
-            },
-            logOut(){
-                axios.post("/users/logout").then((response)=>{
-                    let res = response.data;
-                    if(res.status=="0"){
-//                        this.nickName = '';
-                      this.nickName=''
-                    }
-                })
-            },
+
   }
 }
 </script>
@@ -186,9 +153,23 @@ export default {
     transition:all .2s
 
 }
-
 .navbar-search:hover{
     background:#FF7E00;
     border:1px solid #FF7E00;
+}
+.menu-thumbnail{
+    width:1280px;
+    height:200px;
+}
+.menu-container{
+    width:1280px;
+    height:230px;
+}
+.menu-thumbnail-list li{
+    position:relative;
+    float:left;
+    width:180px;
+    padding:35px 12px 0;
+    text-align:center;
 }
 </style>
