@@ -115,10 +115,16 @@ import './../assets/css/iconfont/iconfont.css'
     .cart-enter-active,.cart-leave-active{
         transition: 0.3s all ease;
     }
-    .cart-enter-active{
+    .cart-enter{
+        height:0px;
+    }
+    .cart-enter-to{
         height:100px;
     }
-    .cart-leave-active{
+    .cart-leave{
+        height:100px
+    }
+    .cart-leave-to{
         height:0px;
     }
 

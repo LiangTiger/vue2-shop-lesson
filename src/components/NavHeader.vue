@@ -11,7 +11,7 @@
             <div class="navbar-left-ad">
                 <a class="navbar-ad"></a>
             </div>
-            <ul class="menu-list">
+            <ul @mouseenter="enterLi" @mouseleave="leaveLi" class="menu-list">
                 <li><a href="#">小米手机</a></li>
                 <li><a href="#">红米</a></li>
                 <li><a href="#">笔记本</a></li>
@@ -33,12 +33,14 @@
     </div>
     <div class="menu-container">
         <transition name="menu-thumbnail" mode="out-in">
-            <div class="menu-thumbnail">
-                <ul class="menu-thumbnail-list">
-                    <li v-for="item in items" v-bind:key="item">
-                        {{item}}
-                    </li>
-                </ul>
+            <div  v-show="display" class="menu-thumbnail">
+                <div  v-show="display" class="menu-ul">
+                    <ul v-show="display" class="menu-thumbnail-list">
+                        <li  v-for="item in items" v-bind:key="item">
+                            {{item}}
+                        </li>
+                    </ul>
+                </div>
             </div>
         </transition>
     </div>
@@ -55,12 +57,19 @@ export default {
   data () {
     return {
         items:[1,2,3,4,5,6,7],
-        view:'v-a'
+        view:'v-a',
+        display:false,
+
     }
   },
   methods:{
-
-  }
+    enterLi(){
+        this.display=true;
+    },
+    leaveLi(){
+        this.display=false;
+    }
+    }
 }
 </script>
 
@@ -158,12 +167,19 @@ export default {
     border:1px solid #FF7E00;
 }
 .menu-thumbnail{
-    width:1280px;
+    margin:0 auto;
+    width:100%;
     height:200px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.5);
 }
 .menu-container{
-    width:1280px;
+    width:100%;
     height:230px;
+    margin:0 auto;
+}
+.menu-ul{
+    width:1280px;
+    margin:0 auto;
 }
 .menu-thumbnail-list li{
     position:relative;
@@ -172,4 +188,20 @@ export default {
     padding:35px 12px 0;
     text-align:center;
 }
+.menu-thumbnail-enter-active,.menu-thumbnail-leave-active{
+    transition: 0.3s all ease;
+}
+.menu-thumbnail-enter{
+    height:0px;
+}
+.menu-thumbnail-enter-to{
+    height:200px;
+}
+..menu-thumbnail-leave{
+    height:200px;
+}
+.menu-thumbnail-leave-to{
+    height:0px;
+}
+
 </style>
