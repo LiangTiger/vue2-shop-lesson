@@ -35,9 +35,12 @@
         <transition name="menu-thumbnail" mode="out-in">
             <div  v-show="display" class="menu-thumbnail">
                 <div  v-show="display" class="menu-ul">
-                    <ul v-show="display" class="menu-thumbnail-list">
-                        <li  v-for="item in items" v-bind:key="item">
-                            {{item}}
+                    <ul  class="menu-thumbnail-list">
+                        <li   v-show="display" v-for="item in items">
+                            <div>
+                                <img class="thumbnail-img" v-bind:src="item.img"></img>
+                                <p  class="thumbnail-price"{{item.price}}</p>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -56,7 +59,14 @@ import axios from'axios'
 export default {
   data () {
     return {
-        items:[1,2,3,4,5,6,7],
+        items:[
+            {img:"https://i1.mifile.cn/f/i/g/2015/cn-index/5-320-220.png",price:200},
+            {img:"https://i1.mifile.cn/f/i/g/2015/cn-index/5P-320-220.png",price:300},
+            {img:"https://i1.mifile.cn/f/i/g/2015/cn-index/320-220-1.png",price:300},
+            {img:"https://i1.mifile.cn/f/i/g/2015/cn-index/3205a.png",price:300},
+            {img:"https://i1.mifile.cn/f/i/g/2015/320-220.jpg",price:300},
+            {img:"https://i1.mifile.cn/f/i/g/2015/cn-index/hmn4xtb.jpg",price:300},
+            ],
         view:'v-a',
         display:false,
 
@@ -75,6 +85,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
+.thumbnail-price{
+
+}
+.thumbnail-img{
+    width:160px;
+    height:110px;
+    border-right:1px solid #b0b0b0;
+}
 .navbar{
     margin:0 auto;
     width:1280px;
@@ -133,7 +151,6 @@ export default {
     position:relative;
     width:296px;
     height:52px;
-
 }
 .navbar-input{
     position:absolute;
@@ -189,7 +206,10 @@ export default {
     text-align:center;
 }
 .menu-thumbnail-enter-active,.menu-thumbnail-leave-active{
-    transition: 0.3s all ease;
+    transition-property:all;
+    transition-duration:0.2s;
+    transition-timing-function:ease;
+    transition-delay:0.2s;
 }
 .menu-thumbnail-enter{
     height:0px;
