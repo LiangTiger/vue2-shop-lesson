@@ -58,7 +58,7 @@ import './../assets/css/iconfont/iconfont.css'
         background:#333;
     }
     .topbarNav{
-        max-width:1280px;
+        max-width:1226px;
         margin:0 auto;
     }
     .topbarNavLeft{

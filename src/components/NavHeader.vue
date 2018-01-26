@@ -1,54 +1,51 @@
 <template>
-  <div >
- <header class="header">
-    <div class="navbar">
-        <div class="navbar-logo-container">
-            <a href="/">
-                <img class="navbar-brand-logo" src="/static/logo-mi.png">
-            </a>
-        </div>
-        <div class="navbar-left-container">
-            <div class="navbar-left-ad">
-                <a class="navbar-ad"></a>
+  <div>
+    <header class="header">
+        <div class="navbar">
+            <div class="navbar-logo-container">
+                <a href="/">
+                    <img class="navbar-brand-logo" src="/static/logo-mi.png">
+                </a>
             </div>
-            <ul @mouseenter="enterLi" @mouseleave="leaveLi" class="menu-list">
-                <li><a href="#">小米手机</a></li>
-                <li><a href="#">红米</a></li>
-                <li><a href="#">笔记本</a></li>
-                <li><a href="#">电视</a></li>
-                <li><a href="#">盒子</a></li>
-                <li><a href="#">新品</a></li>
-                <li><a href="#">路由器</a></li>
-                <li><a href="#">智能硬件</a></li>
-                <li><a href="#">服务</a></li>
-                <li><a href="#">社区</a></li>
-            </ul>
-        </div>
-        <div class="navbar-right-search">
-            <form class="serach-form">
-                <input class="navbar-input" type="input"></input>
-                <button class="navbar-search iconfont" type="submit" value=""><i class="icon-sousuo"></i></button>
-            </form>
-        </div>
-    </div>
-    <div class="menu-container">
-        <transition name="menu-thumbnail" mode="out-in">
-            <div  v-show="display" class="menu-thumbnail">
-                <div  v-show="display" class="menu-ul">
-                    <ul  class="menu-thumbnail-list">
-                        <li   v-show="display" v-for="item in items">
-                            <div>
-                                <img class="thumbnail-img" v-bind:src="item.img"></img>
-                                <p  class="thumbnail-price"{{item.price}}</p>
-                            </div>
-                        </li>
-                    </ul>
+            <div class="navbar-left-container">
+                <div class="navbar-left-ad">
+                    <a class="navbar-ad"></a>
                 </div>
+                <ul @mouseenter="enterLi" @mouseleave="leaveLi" class="menu-list">
+                    <li><a href="#">小米手机</a></li>
+                    <li><a href="#">红米</a></li>
+                    <li><a href="#">笔记本</a></li>
+                    <li><a href="#">电视</a></li>
+                    <li><a href="#">盒子</a></li>
+                    <li><a href="#">新品</a></li>
+                    <li><a href="#">路由器</a></li>
+                    <li><a href="#">智能硬件</a></li>
+                    <li><a href="#">服务</a></li>
+                    <li><a href="#">社区</a></li>
+                </ul>
             </div>
-        </transition>
-    </div>
+            <div class="navbar-right-search">
+                <form class="serach-form">
+                    <input class="navbar-input" type="input"></input>
+                    <button class="navbar-search iconfont" type="submit" value=""><i class="icon-sousuo"></i></button>
+                </form>
+            </div>
+        </div>
+        <div v-show="display" class="menu-container">
+            <transition name="menu-thumbnail" v-on:after-enter="afterEnter" v-on:leave="leave">
+                <div  v-show="display" class="menu-thumbnail">
+                    <div  class="menu-ul">
+                        <ul class="menu-thumbnail-list">
+                            <li  v-show="imgDesplay"  v-for="item in items">
+                                <img  class="thumbnail-img" v-bind:src="item.img"></img>
+                                <p  class="thumbnail-price"{{item.price}}</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </transition>
+        </div>
 </header>
- 
 </div>
 </template>
 
@@ -69,6 +66,7 @@ export default {
             ],
         view:'v-a',
         display:false,
+        imgDesplay:false
 
     }
   },
@@ -78,6 +76,12 @@ export default {
     },
     leaveLi(){
         this.display=false;
+    },
+    afterEnter(el){
+        this.imgDesplay=true;
+    },
+    leave(el){
+        this.imgDesplay=false;
     }
     }
 }
@@ -85,8 +89,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-.thumbnail-price{
-
+.header{
+    height:100px;
+    width:1283px;
+    margin:0 auto;
 }
 .thumbnail-img{
     width:160px;
@@ -95,7 +101,7 @@ export default {
 }
 .navbar{
     margin:0 auto;
-    width:1280px;
+    width:1226px;
     height:100px;
 }
 .navbar-logo-container{
@@ -121,11 +127,11 @@ export default {
     background-repeat:no-repeat;
 }
 .navbar-brand-logo{
-    margin:20px 20px;
+    margin:20px 0px;
 }
 .navbar-left-container{
     float:left;
-    width:850px;
+    width:820px;
     height:100px;
 }
 .menu-list{
@@ -133,10 +139,9 @@ export default {
 }
 .menu-list li{
     height:80px;
-    height:80px;
     font-size:16px;
     float:left;
-    margin:10px 13px 0px;
+    margin:10px 10px 0px;
 }
 .menu-list a {
     display:block;
@@ -188,6 +193,7 @@ export default {
     width:100%;
     height:200px;
     box-shadow:0 2px 10px rgba(0,0,0,0.5);
+    background:#fff;
 }
 .menu-container{
     width:100%;
@@ -205,7 +211,7 @@ export default {
     padding:35px 12px 0;
     text-align:center;
 }
-.menu-thumbnail-enter-active,.menu-thumbnail-leave-active{
+.menu-thumbnail-enter-active, .menu-thumbnail-leave-active{
     transition-property:all;
     transition-duration:0.2s;
     transition-timing-function:ease;
