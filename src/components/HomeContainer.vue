@@ -4,7 +4,7 @@
         <div class="container-left-menu">
             <ul class="container-menu-list">
                 <li class="container-menu-li"v-for="item in items" @mouseenter="enterLi" @mouseleave="leaveLi" v-bind="item.name">
-                    <a>{{item.data}}</a>
+                    <a>{{item.data}}<i class="iconfont icon-jiantouyou"></i></a>
                 </li>
             </ul>
             <div class="container-menu-right">
@@ -41,6 +41,11 @@
 </script>
 
 <style>
+.icon-jiantouyou{
+    position:absolute;
+    right:0px;
+    color:#c6c6c6;
+}
 .container-menu-right{
     width:800px;
     height:460px;

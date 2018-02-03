@@ -196,9 +196,11 @@ export default {
     background:#fff;
 }
 .menu-container{
+    position:absolute;
     width:100%;
     height:230px;
     margin:0 auto;
+    z-index:10;
 }
 .menu-ul{
     width:1280px;
@@ -210,6 +212,7 @@ export default {
     width:180px;
     padding:35px 12px 0;
     text-align:center;
+    z-index:10;
 }
 .menu-thumbnail-enter-active, .menu-thumbnail-leave-active{
     transition-property:all;
