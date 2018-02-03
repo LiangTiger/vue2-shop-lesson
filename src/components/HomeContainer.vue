@@ -7,7 +7,7 @@
                     <a>{{item.data}}<i class="iconfont icon-jiantouyou"></i></a>
                 </li>
             </ul>
-            <div class="container-menu-right">
+            <div class="container-menu-right" v-show="display">
             </div>
         </div>
     </div>
@@ -18,7 +18,7 @@
  export default {
    data () {
      return {
-         items:[
+        items:[
                 {name:"phone",data:"手机 电话卡"},
                 {name:"tv",data:"电视 盒子"},
                 {name:"mibook",data:"笔记本"},
@@ -29,13 +29,18 @@
                 {name:"power",data:"移动电源 插线板"},
                 {name:"headset",data:"耳机 音箱"},
                 {name:"life",data:"生活 米兔"}
-            ]
+            ],
+        display:false
+
      }
    },
     methods:{
-        enterLi:function(e){
-            alert(item.name)
-    }
+        enterLi(){
+            this.display=ture;
+        },
+        leaveLi(){
+            this.display=false;
+        }
     }
  }
 </script>
@@ -52,7 +57,7 @@
     left:234px;
     top:0px;
     position:absolute;
-    background-color:#c6c6c6;
+    background-color:#fff;;
 }
 .container-menu-li a{
     position:relative;
