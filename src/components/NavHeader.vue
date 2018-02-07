@@ -38,7 +38,7 @@
                         <ul class="menu-thumbnail-list">
                             <li  v-show="imgDesplay"  v-for="item in items">
                                 <img  class="thumbnail-img" v-bind:src="item.img"></img>
-                                <p  class="thumbnail-price"{{item.price}}</p>
+                                <p  class="thumbnail-price">{{item.price}}</p>
                             </li>
                         </ul>
                     </div>
