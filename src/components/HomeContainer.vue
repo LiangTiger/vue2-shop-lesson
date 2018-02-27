@@ -29,8 +29,14 @@
                         </a>
                     </li>
                 </ul>
-                
             </div>
+        </div>
+        <div class="container-right-banner">
+            <ul class="container-right-banner-ul">
+                <li v-for="banner in banners">
+                    <img v-bind:src="banner.url">
+                </li>
+            </ul>
         </div>
     </div>
  </div>
@@ -43,7 +49,11 @@ import mi6 from "../../resource/img/xm6_80.png"
 import m5x from "../../resource/img/80pc-5x.png"
 import max2 from "../../resource/img/max2_80.jpg"
 import m5plus from "../../resource/img/redmi5P-80-80.png"
-
+import banner1 from "../../resource/img/banner1.jpg"
+import banner2 from "../../resource/img/banner2.jpg"
+import banner3 from "../../resource/img/banner3.jpg"
+import banner4 from "../../resource/img/banner4.jpg"
+import banner5 from "../../resource/img/banner5.jpg"
  export default {
    data () {
      return {

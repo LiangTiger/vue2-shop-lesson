@@ -113,10 +113,12 @@ import './../assets/css/iconfont/iconfont.css'
         padding:30px 0 0;
     }
     .cart-enter-active,.cart-leave-active{
-        transition: 0.3s all ease;
+        transition-property:all;
+        transition-duration:0.2s;
+        transition-timing-function:ease;
     }
     .cart-enter{
-        height:0px;
+        height:50px;
     }
     .cart-enter-to{
         height:100px;
