@@ -11,21 +11,21 @@
                 <ul class="children-list-1">
                     <li v-for="list in lists1">
                         <a>
-                            <img v-bind:src="list.url"><span>{{list.name}}</span>
+                            <img v-bind:src="list.url"><p>{{list.name}}</p>
                         </a>
                     </li>
                 </ul>
                 <ul class="children-list-2">
                     <li v-for="list in lists2">
                         <a>
-                            <img v-bind:src="list.url"><span>{{list.name}}</span>
+                            <img v-bind:src="list.url"><p>{{list.name}}</p>
                         </a>
                     </li>
                 </ul>
                 <ul class="children-list-3">
                     <li v-for="list in lists3">
                         <a>
-                            <img v-bind:src="list.url"><span>{{list.name}}</span>
+                            <img v-bind:src="list.url"><p>{{list.name}}</p>
                         </a>
                     </li>
                 </ul>
@@ -68,32 +68,32 @@ import m5plus from "../../resource/img/redmi5P-80-80.png"
             {name:"红米5 Plus",url:m5plus}
         ],
         lists2:[
-            {name:"小米Note 3",url:"../../resource/img/note3-80-2.png"},
-            {name:"小米Mix 2",url:"../../resource/img/mix2-80-2.png"},
-            {name:"小米6",url:"../../resource/img/mi6-80-2.png"},
-            {name:"小米5X",url:"../../resource/img/5x-80-2.png"},
-            {name:"小米Max 2",url:"../../resource/img/max2-80-2.png"},
-            {name:"小米5 Plus",url:"../../resource/img/5plus-80-2.png"}
+            {name:"小米Note 3",url:note3},
+            {name:"小米Mix 2",url:mix2},
+            {name:"小米6",url:mi6},
+            {name:"小米5X",url:m5x},
+            {name:"小米Max 2",url:max2},
+            {name:"红米5 Plus",url:m5plus}
         ],
         lists3:[
-            {name:"小米Note 3",url:"../../resource/img/note3-80-2.png"},
-            {name:"小米Mix 2",url:"../../resource/img/mix2-80-2.png"},
-            {name:"小米6",url:"../../resource/img/mi6-80-2.png"},
-            {name:"小米5X",url:"../../resource/img/5x-80-2.png"},
-            {name:"小米Max 2",url:"../../resource/img/max2-80-2.png"},
-            {name:"小米5 Plus",url:"../../resource/img/5plus-80-2.png"}
+            {name:"小米Note 3",url:note3},
+            {name:"小米Mix 2",url:mix2},
+            {name:"小米6",url:mi6},
+            {name:"小米5X",url:m5x},
+            {name:"小米Max 2",url:max2},
+            {name:"红米5 Plus",url:m5plus}
         ],
-        menuDisplay:true,
+        menuDisplay:false,
 
      }
    },
     methods:{
-        // enterLi(){
-        //     this.menuDisplay=true;
-        // },
-        // leaveLi(){
-        //     this.menuDisplay=false;
-        // }
+        enterLi(){
+            this.menuDisplay=true;
+        },
+        leaveLi(){
+            this.menuDisplay=false;
+        }
     }
  }
 </script>
@@ -109,10 +109,15 @@ import m5plus from "../../resource/img/redmi5P-80-80.png"
     line-height:40px;
 }
 .container-menu-right li img{
+    float:left;
+    display:inline-block;
     width:40px;
     height:40px;
 }
-.container-menu-right span{
+.container-menu-right p{
+    display:inline-block;
+    height:40px;
+    width:100px;
     line-height:40px;
 }
 .container-menu-right ul{
