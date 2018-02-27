@@ -1,15 +1,15 @@
 <template>
  <div>
     <div class="container">
-        <div class="container-right-banner" name="list">
-            <transition-group tag="ul" class="container-right-banner-ul">
+        <div class="container-right-banner">
+            <transition-group tag="ul" class="container-right-banner-ul" name="list">
                 <li v-for="(banner,index) in banners" :key="index" v-show="index===currentIndex" @mouseenter="stop" @mouseleave="go">
                     <img v-bind:src="banner.url">
                 </li>
             </transition-group>
         </div>
 
-         <div class="carousel-items">
+        <div class="carousel-items">
             <span v-for="(banner,index) in banners.length" :class="{'active':index===currentIndex}" @mouseover="change(index)"></span>
         </div>
 
@@ -148,10 +148,28 @@ import banner5 from "../../resource/img/banner5.jpg"
 </script>
 
 <style>
+.list-enter-to{
+    transition:all 1s ease;
+    transform:translateX(0);
+}
+.list-leave-to{
+    transition:all 1s ease;
+    transform:translateX(-100%)
+}
+.list-enter{
+    transform:translateX(-100%)
+}
+.list-leave{
+    transform:translateX(0)
+}
 .container-right-banner{
     width:100%;
     height:460px;
     overflow:hidden;
+}
+.container-right-banner-ul{
+    position:relative;
+    width:100%;
 }
 .container-right-banner-ul li{
     float:left;

@@ -118,7 +118,7 @@ import './../assets/css/iconfont/iconfont.css'
         transition-timing-function:ease;
     }
     .cart-enter{
-        height:50px;
+        height:60px;
     }
     .cart-enter-to{
         height:100px;
