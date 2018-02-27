@@ -124,6 +124,24 @@ import banner5 from "../../resource/img/banner5.jpg"
                     this.autoPlay()
                 },4000)
             })
+        },
+        go(){
+            this.timer=setInterval(()=>{
+                this.autoPlay()
+            },4000)
+        },
+        stop(){
+            clearInterval(this.timer)
+            this.timer=null;
+        },
+        change(index){
+            this.currentIndex=index
+        },
+        autoPlay(){
+            this.currentIndex++
+            if(this.currentIndex>this.banners.length-1){
+                this.currentIndex=0;
+            }
         }
     }
  }
@@ -137,7 +155,7 @@ import banner5 from "../../resource/img/banner5.jpg"
 }
 .container-right-banner-ul li{
     float:left;
-    width:1226px;
+    width:100%;
 
 }
 .container-left-menu{
