@@ -1,6 +1,18 @@
 <template>
  <div>
     <div class="container">
+        <div class="container-right-banner" name="list">
+            <transition-group tag="ul" class="container-right-banner-ul">
+                <li v-for="(banner,index) in banners" :key="index" v-show="index===currentIndex" @mouseenter="stop" @mouseleave="go">
+                    <img v-bind:src="banner.url">
+                </li>
+            </transition-group>
+        </div>
+
+         <div class="carousel-items">
+            <span v-for="(banner,index) in banners.length" :class="{'active':index===currentIndex}" @mouseover="change(index)"></span>
+        </div>
+
         <div class="container-left-menu">
             <ul class="container-menu-list">
                 <li class="container-menu-li" v-for="item in items" @mouseenter="enterLi" @mouseleave="leaveLi" v-bind="item.name">
@@ -30,13 +42,6 @@
                     </li>
                 </ul>
             </div>
-        </div>
-        <div class="container-right-banner">
-            <ul class="container-right-banner-ul">
-                <li v-for="banner in banners">
-                    <img v-bind:src="banner.url">
-                </li>
-            </ul>
         </div>
     </div>
  </div>
@@ -93,6 +98,15 @@ import banner5 from "../../resource/img/banner5.jpg"
             {name:"小米Max 2",url:max2},
             {name:"红米5 Plus",url:m5plus}
         ],
+        banners:[
+            {name:banner1,url:banner1},
+            {name:banner2,url:banner2},
+            {name:banner3,url:banner3},
+            {name:banner4,url:banner4},
+            {name:banner5,url:banner5}
+        ],
+        currentIndex:0,
+        timer:'',
         menuDisplay:false,
 
      }
@@ -103,12 +117,34 @@ import banner5 from "../../resource/img/banner5.jpg"
         },
         leaveLi(){
             this.menuDisplay=false;
+        },
+        created(){
+            this.$nextTick(()=>{
+                this.timer=setInterval(()=>{
+                    this.autoPlay()
+                },4000)
+            })
         }
     }
  }
 </script>
 
 <style>
+.container-right-banner{
+    width:100%;
+    height:460px;
+    overflow:hidden;
+}
+.container-right-banner-ul li{
+    float:left;
+    width:1226px;
+
+}
+.container-left-menu{
+    position:absolute;
+    top:0px;
+    float:left;
+}
 .container-menu-right li{
     width:265px;
     height:76px;
